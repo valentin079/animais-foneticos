@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Animais Fonéticos</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+
+      background: linear-gradient(
+        120deg,
+        #b9fbc0,
+        #a3c4f3,
+        #fde2e4,
+        #fff3b0
+      );
+
+      background-size: 350% 350%;
+      animation: fundoSuave 12s ease infinite;
+    }
+
+    @keyframes fundoSuave {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 24px;
+      width: min(960px, 100%);
+    }
+
+    h1 {
+      color: #2f3e46;
+      font-size: clamp(2rem, 5vw, 4rem);
+      margin: 0 0 12px;
+    }
+
+    .subtitulo {
+      color: #354f52;
+      font-size: clamp(1rem, 3vw, 1.4rem);
+      margin-bottom: 28px;
+      font-weight: bold;
+    }
+
+    .vaca-card {
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 36px;
+      padding: 24px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
+
+      margin: 0 auto 28px;
+
+      width: fit-content;
+      max-width: 90%;
+
+      animation: flutuar 3s ease-in-out infinite;
+    }
+
+    @keyframes flutuar {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .vaca-img {
+      width: min(55vw, 280px);
+      height: auto;
+      display: block;
+      user-select: none;
+    }
+
+    .botoes-sons {
+      display: grid;
+
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(110px, 1fr)
+      );
+
+      gap: 16px;
+
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .som-btn {
+      border: none;
+      border-radius: 28px;
+
+      padding: 22px 16px;
+
+      font-size: clamp(1.8rem, 6vw, 3rem);
+      font-weight: bold;
+
+      color: #2f3e46;
+      background: #ffffff;
+
+      cursor: pointer;
+
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+
+      transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        background 0.18s ease;
+    }
+
+    .som-btn:hover {
+      transform: scale(1.05);
+
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.2);
+
+      background: #f8fff4;
+    }
+
+    .som-btn:active {
+      transform: scale(0.94);
+      background: #d8f3dc;
+    }
+
+    .som-btn.ativo {
+      animation: pulso 0.45s ease;
+      background: #d8f3dc;
+    }
+
+    @keyframes pulso {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.15);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .instrucao {
+      margin-top: 22px;
+      color: #354f52;
+      font-size: 1.15rem;
+      font-weight: bold;
+    }
+
+    .bolha {
+      position: absolute;
+
+      border-radius: 50%;
+
+      background: rgba(255, 255, 255, 0.35);
+
+      animation: subir 8s linear infinite;
+
+      bottom: -120px;
+
+      z-index: 1;
+    }
+
+    @keyframes subir {
+      from {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+      }
+
+      to {
+        transform: translateY(-120vh) scale(1.4);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div
+    class="bolha"
+    style="
+      width: 70px;
+      height: 70px;
+      left: 10%;
+      animation-delay: 0s;
+    "
+  ></div>
+
+  <div
+    class="bolha"
+    style="
+      width: 100px;
+      height: 100px;
+      left: 35%;
+      animation-delay: 2s;
+    "
+  ></div>
+
+  <div
+    class="bolha"
+    style="
+      width: 55px;
+      height: 55px;
+      left: 60%;
+      animation-delay: 4s;
+    "
+  ></div>
+
+  <div
+    class="bolha"
+    style="
+      width: 90px;
+      height: 90px;
+      left: 80%;
+      animation-delay: 1s;
+    "
+  ></div>
+
+  <main class="container">
+
+    <h1>Sons com M</h1>
+
+    <p class="subtitulo">
+      Toque em uma sílaba para ouvir
+    </p>
+
+    <section
+      class="vaca-card"
+      aria-label="Imagem de uma vaca"
+    >
+      <img
+  class="vaca-img"
+  src="https://drive.google.com/uc?export=view&id=1_482bL5vvHJ-M98A3Ua49vSbSb3fObCZ"
+  alt="Vaca"
+/>
+    </section>
+
+    <section
+      class="botoes-sons"
+      aria-label="Botões de sons"
+    >
+
+      <button class="som-btn" data-som="m">
+        M
+      </button>
+
+      <button class="som-btn" data-som="ma">
+        MA
+      </button>
+
+      <button class="som-btn" data-som="me">
+        ME
+      </button>
+
+      <button class="som-btn" data-som="mi">
+        MI
+      </button>
+
+      <button class="som-btn" data-som="mo">
+        MO
+      </button>
+
+      <button class="som-btn" data-som="mu">
+        MU
+      </button>
+
+    </section>
+
+    <p class="instrucao">
+      🐮 Vamos praticar juntos!
+    </p>
+
+  </main>
+
+  <script>
+
+    const botoes = document.querySelectorAll('.som-btn');
+
+    const audios = {
+      m: new Audio('./m/m.mp3'),
+      ma: new Audio('./m/ma.mp3'),
+      me: new Audio('./m/me.mp3'),
+      mi: new Audio('./m/mi.mp3'),
+      mo: new Audio('./m/mo.mp3'),
+      mu: new Audio('./m/mu.mp3'),
+    };
+
+    botoes.forEach((botao) => {
+
+      botao.addEventListener('click', () => {
+
+        const som = botao.dataset.som.toLowerCase();
+
+        const audio = audios[som];
+
+        if (!audio) return;
+
+        audio.currentTime = 0;
+
+        botao.classList.add('ativo');
+
+        setTimeout(() => {
+          botao.classList.remove('ativo');
+        }, 400);
+
+        audio.play();
+
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>
